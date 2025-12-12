@@ -9,12 +9,12 @@
 A simple command-line task management tool that lets users add, view, update, and complete tasks.\
 \
 ## Features\
-- Add new tasks with a title, description, and due date  \
-- View all tasks in a clean list format  \
-- Mark tasks as completed  \
-- Edit or update an existing task  \
-- Save tasks to a file  \
-- Load saved tasks when the program starts  \
+- Add new tasks with a title and category\
+- View all tasks in a clean list format\
+- Mark tasks as completed\
+- Edit existing tasks\
+- Save tasks to a file\
+- Load saved tasks when the program starts\
 \
 ## Building the Project\
 To build the project using CMake:\
@@ -24,16 +24,4 @@ mkdir build\
 cd build\
 cmake ..\
 cmake --build .\
-## Current Status\
-\
-Implemented:\
-- Add and display tasks (Checkpoint 1)\
-\
-In Progress:\
-- Marking tasks as completed\
-- Editing tasks\
-\
-Planned:\
-- File save and load\
-- Task search and filtering\
 }
