@@ -1,6 +1,19 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2865
-\cocoatextscaling0\cocoaplatform0{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-}
+cmake_minimum_required(VERSION 3.10)
+
+project(TaskTrack)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Include header files
+include_directories(include)
+
+# Source files
+set(SOURCES
+    src/main.cpp
+    src/Task.cpp
+    src/TaskList.cpp
+)
+
+# Create executable
+add_executable(tasktrack ${SOURCES})
