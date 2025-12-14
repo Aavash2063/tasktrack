@@ -16,6 +16,14 @@ int TaskList::findTaskIndexByTitle(const std::string& title) const {
 void TaskList::addTask(const Task& task) {
     tasks.push_back(task);
 }
+void TaskList::markTaskCompleted(int index) {
+    if (index < 0 || index >= static_cast<int>(tasks.size())) {
+        std::cout << "Invalid task number." << std::endl;
+        return;
+    }
+    tasks[index].toggleCompleted();
+}
+
 
 bool TaskList::removeTask(const std::string& title) {
     int index = findTaskIndexByTitle(title);

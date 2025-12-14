@@ -5,27 +5,57 @@
 
 using namespace std;
 
+void showMenu() {
+    cout << "\n=== TaskTrack Menu ===\n";
+    cout << "1. Add task\n";
+    cout << "2. Display tasks\n";
+    cout << "3. Mark task as completed\n";
+    cout << "4. Exit\n";
+    cout << "Choose an option: ";
+}
+
 int main() {
     TaskList list;
+    int choice = 0;
 
-    cout << "=== TaskTrack (Checkpoint 1) ===\n";
-    cout << "Add one task and display tasks.\n\n";
+    cout << "=== TaskTrack (Checkpoint 2) ===\n";
 
-    string title;
-    string category;
+    while (choice != 4) {
+        showMenu();
+        cin >> choice;
+        cin.ignore(); // clear newline
 
-    cout << "Enter task title: ";
-    getline(cin, title);
+        if (choice == 1) {
+            string title, category;
 
-    cout << "Enter category (Work/Study/Personal): ";
-    getline(cin, category);
+            cout << "Enter task title: ";
+            getline(cin, title);
 
-    Task t(title, category, ""); // createdDate not required yet
-    list.addTask(t);
+            cout << "Enter category (Work/Study/Personal): ";
+            getline(cin, category);
 
-    cout << "\nTask added.\n";
-    list.displayAllTasks();
+            Task t(title, category, "");
+            list.addTask(t);
 
-    cout << "\nDone.\n";
+            cout << "Task added.\n";
+        }
+        else if (choice == 2) {
+            list.displayAllTasks();
+        }
+        else if (choice == 3) {
+            int taskNumber;
+            cout << "Enter task number to mark completed: ";
+            cin >> taskNumber;
+
+            list.markTaskCompleted(taskNumber - 1);
+        }
+        else if (choice == 4) {
+            cout << "Exiting TaskTrack.\n";
+        }
+        else {
+            cout << "Invalid option. Try again.\n";
+        }
+    }
+
     return 0;
 }

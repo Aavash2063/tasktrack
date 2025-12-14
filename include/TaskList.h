@@ -22,16 +22,20 @@ public:
 
     // Basic operations
     void addTask(const Task& task);
+    void markTaskCompleted(int index);
+
     bool removeTask(const std::string& title);
     bool markTaskCompleted(const std::string& title);
     bool editTaskTitle(const std::string& oldTitle, const std::string& newTitle);
     bool editTaskCategory(const std::string& title, const std::string& newCategory);
+
 
     // Summary / queries
     int getTotalTaskCount() const;
     int getCompletedTaskCount() const;
     int getPendingTaskCount() const;
     double getCompletionPercentage() const; // 0.0 to 100.0
+
 
     // Display helpers
     void displayAllTasks() const;
