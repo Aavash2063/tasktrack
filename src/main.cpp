@@ -1,59 +1,37 @@
 #include <iostream>
-#include <string>
-#include "../include/Task.h"
 #include "../include/TaskList.h"
-
-using namespace std;
-
-void showMenu() {
-    cout << "\n=== TaskTrack Menu ===\n";
-    cout << "1. Add task\n";
-    cout << "2. Display tasks\n";
-    cout << "3. Mark task as completed\n";
-    cout << "4. Exit\n";
-    cout << "Choose an option: ";
-}
 
 int main() {
     TaskList list;
-    int choice = 0;
+    list.loadFromFile("tasks.txt");
 
-    cout << "=== TaskTrack (Checkpoint 2) ===\n";
+    int choice;
+    std::string title, category;
 
-    while (choice != 4) {
-        showMenu();
-        cin >> choice;
-        cin.ignore(); // clear newline
+    while (true) {
+        std::cout << "\n1. Add task\n2. Display tasks\n3. Mark task completed\n4. Exit\nChoice: ";
+        std::cin >> choice;
+        std::cin.ignore();
 
         if (choice == 1) {
-            string title, category;
-
-            cout << "Enter task title: ";
-            getline(cin, title);
-
-            cout << "Enter category (Work/Study/Personal): ";
-            getline(cin, category);
-
-            Task t(title, category, "");
-            list.addTask(t);
-
-            cout << "Task added.\n";
+            std::cout << "Title: ";
+            std::getline(std::cin, title);
+            std::cout << "Category: ";
+            std::getline(std::cin, category);
+            list.addTask(Task(title, category));
         }
         else if (choice == 2) {
             list.displayAllTasks();
         }
         else if (choice == 3) {
-            int taskNumber;
-            cout << "Enter task number to mark completed: ";
-            cin >> taskNumber;
-
-            list.markTaskCompleted(taskNumber - 1);
+            int num;
+            std::cout << "Task number: ";
+            std::cin >> num;
+            list.markTaskCompleted(num - 1);
         }
         else if (choice == 4) {
-            cout << "Exiting TaskTrack.\n";
-        }
-        else {
-            cout << "Invalid option. Try again.\n";
+            list.saveToFile("tasks.txt");
+            break;
         }
     }
 

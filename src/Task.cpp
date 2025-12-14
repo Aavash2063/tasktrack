@@ -1,19 +1,11 @@
 #include "../include/Task.h"
 #include <iostream>
+#include <sstream>
 
-Task::Task()
-    : title("Untitled"), category("Uncategorized"), completed(false), createdDate("") {
-}
+Task::Task() : title(""), category(""), completed(false) {}
 
-Task::Task(const std::string& taskTitle)
-    : title(taskTitle), category("Uncategorized"), completed(false), createdDate("") {
-}
-
-Task::Task(const std::string& taskTitle,
-           const std::string& taskCategory,
-           const std::string& dateCreated)
-    : title(taskTitle), category(taskCategory), completed(false), createdDate(dateCreated) {
-}
+Task::Task(const std::string& t, const std::string& c)
+    : title(t), category(c), completed(false) {}
 
 std::string Task::getTitle() const {
     return title;
@@ -27,38 +19,28 @@ bool Task::isCompleted() const {
     return completed;
 }
 
-std::string Task::getCreatedDate() const {
-    return createdDate;
+void Task::setCompleted(bool value) {
+    completed = value;
 }
 
-void Task::setTitle(const std::string& taskTitle) {
-    title = taskTitle;
+std::string Task::serialize() const {
+    return title + "|" + category + "|" + (completed ? "1" : "0");
 }
 
-void Task::setCategory(const std::string& taskCategory) {
-    category = taskCategory;
-}
+Task Task::deserialize(const std::string& line) {
+    std::stringstream ss(line);
+    std::string t, c, done;
 
-void Task::setCompleted(bool status) {
-    completed = status;
-}
+    std::getline(ss, t, '|');
+    std::getline(ss, c, '|');
+    std::getline(ss, done);
 
-void Task::setCreatedDate(const std::string& dateCreated) {
-    createdDate = dateCreated;
-}
-
-void Task::toggleCompleted() {
-    completed = !completed;
+    Task task(t, c);
+    task.setCompleted(done == "1");
+    return task;
 }
 
 void Task::display() const {
-    std::cout << "- " << title
-              << " [" << category << "] "
-              << (completed ? "(Done)" : "(Pending)");
-
-    if (!createdDate.empty()) {
-        std::cout << " Created: " << createdDate;
-    }
-
-    std::cout << std::endl;
+    std::cout << "- " << title << " [" << category << "] "
+              << (completed ? "(Done)" : "(Pending)") << std::endl;
 }

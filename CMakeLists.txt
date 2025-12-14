@@ -17,3 +17,12 @@ set(SOURCES
 
 # Create executable
 add_executable(tasktrack ${SOURCES})
+enable_testing()
+
+add_executable(test_checkpoint3
+    tests/test_checkpoint3.cpp
+    src/Task.cpp
+    src/TaskList.cpp
+)
+
+add_test(NAME Checkpoint3Tests COMMAND test_checkpoint3)

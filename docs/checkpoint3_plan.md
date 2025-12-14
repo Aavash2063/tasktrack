@@ -1,13 +1,13 @@
 # Checkpoint 3: Third Feature Plan
 
 ## Feature Name
-Save and Load Tasks
+Task Completion via Menu Selection
 
 ## Description
-This feature allows tasks to be saved to a file when the program exits and loaded automatically when the program starts. This ensures that tasks are not lost between runs.
+This feature allows users to mark an existing task as completed by selecting it from a numbered menu. It builds on the task list and display functionality by adding interactive task state updates.
 
 ## Why This Feature?
-So far, tasks only exist while the program is running. Saving and loading tasks makes the application practical for real use and completes the basic task tracking workflow.
+After adding and displaying tasks, the next logical step is allowing users to update task status. This makes the application more practical and closer to a real-world task manager.
 
 ## Classes Involved
 - Task
@@ -15,7 +15,7 @@ So far, tasks only exist while the program is running. Saving and loading tasks 
 - main.cpp
 
 ## Expected User Workflow
-When the program starts, it checks for an existing data file and loads tasks if available. When the user exits, all current tasks are saved automatically.
+The user selects the "Mark task as completed" option from the menu, enters a task number, and the selected task is marked as completed.
 
 ## Estimated Time
-3 to 4 hours
+Approximately 3 hours
