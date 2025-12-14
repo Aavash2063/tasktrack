@@ -21,3 +21,15 @@ cmake --build .
 
 ./tasktrack
 
+## Current Status
+
+Implemented:
+- Add tasks
+- Display tasks
+- Mark tasks as completed (Checkpoint 2)
+
+Planned:
+- Edit tasks
+- Save and load tasks
+
+
