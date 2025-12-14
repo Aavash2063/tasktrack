@@ -17,10 +17,8 @@ mkdir build
 cd build
 cmake ..
 cmake --build .
-
-
 ./tasktrack
-
+```
 ## Current Status
 
 Implemented:
@@ -31,5 +29,3 @@ Implemented:
 Planned:
 - Edit tasks
 - Save and load tasks
-
-
